@@ -1,5 +1,6 @@
 package com.mikeleitz.blog.k8s.hostname;
 
+import io.micrometer.core.annotation.Timed;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ import java.net.UnknownHostException;
  *
  * @author leitz
  */
+@Timed("HostnameController")
 @RestController()
 @RequestMapping("/hostname")
 public class HostnameController {
