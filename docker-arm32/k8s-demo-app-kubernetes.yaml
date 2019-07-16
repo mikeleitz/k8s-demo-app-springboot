@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: k8s-demo-app-pod                 # The name Kubernetes will know this pod as.  You will reuse this name when you define its corresponding service.
+  name: k8s-demo-app-pod                                # The name Kubernetes will know this pod as.  You will reuse this name when you define its corresponding service.
   labels:
-    app: k8s-demo-app                    # You can attach labels in key/value pairs to allow for groupings and each search.
-spec:                                    # Spec section describes the application and what it needs.
+    app: k8s-demo-app                                   # You can attach labels in key/value pairs to allow for groupings and each search.
+spec:                                                   # Spec section describes the application and what it needs.
   containers:
-    - name: k8s-demo-app                 # The container name
-      image: mleitz1/k8s-demo-app:arm32  # This is where to find it.  It's defaulting to my Docker hub.
+    - name: k8s-demo-app                                # The container name
+      image: mleitz1/k8s-demo-app:0.0.1-SNAPSHOT_arm32  # This is where to find it.  It's defaulting to my Docker hub.
 
 ---
 
