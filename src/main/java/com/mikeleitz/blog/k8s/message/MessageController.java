@@ -1,5 +1,6 @@
 package com.mikeleitz.blog.k8s.message;
 
+import io.micrometer.core.annotation.Timed;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,7 @@ import java.util.Optional;
  */
 @RestController()
 @RequestMapping("/message")
+@Timed("MessageController")
 public class MessageController {
     private Logger _logger = LoggerFactory.getLogger(MessageController.class);
 

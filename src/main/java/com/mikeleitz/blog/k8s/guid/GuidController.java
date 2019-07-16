@@ -1,5 +1,6 @@
 package com.mikeleitz.blog.k8s.guid;
 
+import io.micrometer.core.annotation.Timed;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,7 @@ import java.util.UUID;
  * @author leitz
  */
 @RestController()
+@Timed("GuidController")
 @RequestMapping("/guid")
 public class GuidController {
     private Logger _logger = LoggerFactory.getLogger(GuidController.class);
