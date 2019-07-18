@@ -11,5 +11,21 @@ spec:
         app: k8s-demo-app
     spec:
       containers:
-      - image: mleitz1/k8s-demo-app:0.0.1-SNAPSHOT_arm32
-        name: k8s-demo-app
+        - image: mleitz1/k8s-demo-app:0.0.1-SNAPSHOT_arm32
+          name: k8s-demo-app
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: k8s-demo-app-svc           # The name of this service.  Much like the pod's name this is how you'll refer to the service to the cluster.
+spec:
+  type: LoadBalancer
+  selector:
+    app: k8s-demo-app              # The application's name you specified in the pod's manifest.
+  ports:
+    - name: http                   # You want http access using TCP.
+      protocol: TCP
+      port: 80                     # The service will listen for inbound connections on port 80.
+      targetPort: 8080             # And forward them to the pod which is listening on port 8080.  The ports the applications are listening on are defined by the Docker container.  You can find them on the corresponding Docker hub page or in the Dockerfile that Docker uses to build the container image.
+  externalIPs:
+    - 192.168.2.10                   # This is the externally facing ip address of the master node.  It's the ip address that the cluster is exposing to the outside world.  There might be a way to alias this, but as of this writing I don't know it.
